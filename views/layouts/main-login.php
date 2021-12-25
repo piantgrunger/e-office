@@ -29,18 +29,40 @@ AppAsset::register($this);
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
-    <div class="preloader">
-        <div class="lds-ripple">
-            <div class="lds-pos"></div>
-            <div class="lds-pos"></div>
+     <!-- Pre-loader start -->
+     <div class="theme-loader">
+        <div class="ball-scale">
+            <div class='contain'>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+                <div class="ring"><div class="frame"></div></div>
+            </div>
         </div>
     </div>
-    <div class="auth-wrapper d-flex no-block justify-content-center align-items-center bg-dark">
-            <div class="auth-box bg-dark border-top border-secondary">
-         <?=$content;?>  
-        </div>
-    </div>        
+    <!-- Pre-loader end -->
 
+    <section class="login-block">
+        <!-- Container-fluid starts -->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- Authentication card start -->
+                    <?=$content?>
+                        <!-- end of form -->
+                </div>
+                <!-- end of col-sm-12 -->
+            </div>
+            <!-- end of row -->
+        </div>
+        <!-- end of container-fluid -->
+    </section>
 <?php $this->endBody() ?>
 
 </body>
