@@ -30,7 +30,7 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-"libraries/bower_components/jquery/js/jquery.min.js",
+//"libraries/bower_components/jquery/js/jquery.min.js",
    "libraries/bower_components/jquery-ui/js/jquery-ui.min.js",
        "libraries/bower_components/popper.js/js/popper.min.js",
    "libraries/bower_components/bootstrap/js/bootstrap.min.js",
@@ -46,8 +46,8 @@ class AppAsset extends AssetBundle
        "libraries/assets/js/script.min.js",
     ];
     public $depends = [
-     //  'yii\web\YiiAsset',
-    //'yii\bootstrap4\BootstrapAsset',
+       'yii\web\YiiAsset',
+  //  'yii\bootstrap4\BootstrapAsset',
   //  'rmrevin\yii\fontawesome\AssetBundle',
         //additional import of third party alert project
        'app\assets\SweetAlertAsset',
