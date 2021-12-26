@@ -16,11 +16,11 @@ echo "<?php\n";
 
 use hscstudio\mimin\components\Mimin;
 use yii\helpers\Html;
-use <?= $generator->indexWidgetType === 'grid' ? "kartik\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
+use <?= $generator->indexWidgetType === 'grid' ? "app\widgets\\grid\\GridView" : "yii\\widgets\\ListView" ?>;
 <?= $generator->enablePjax ? 'use yii\widgets\Pjax;' : '' ?>
 <?=" use kartik\\export\\ExportMenu;";?>
 
-<?php echo'$gridColumns=[[\'class\' => \'yii\grid\SerialColumn\'], ';?>
+<?php echo'$gridColumns=[[\'class\' => \'kartik\grid\SerialColumn\'], ';?>
 
 <?php
 $count = 0;
@@ -36,30 +36,23 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     foreach ($tableSchema->columns as $column) {
         $format = $generator->generateColumnFormat($column);
         if (++$count < 6) {
-          if ((!in_array($column->name,$model::primaryKey()))
+            if ((!in_array($column->name, $model::primaryKey()))
           &&
-          (!in_array($column->name,['created_at','updated_at']))
-          )
-          {
-            echo "            '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
-          }
-        }
-         else {
+          (!in_array($column->name, ['created_at','updated_at','created_by','updated_by']))
+          ) {
+                echo "            '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
+            }
+        } else {
             echo "            // '" . $column->name . ($format === 'text' ? "" : ":" . $format) . "',\n";
         }
     }
 }
 ?>
 
-        <?php echo  " ['class' => 'yii\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
+        <?php echo  " ['class' => 'kartik\grid\ActionColumn',   'template' => Mimin::filterActionColumn([
               'update','delete','view'],".
                 '$this->context->route),    ],    ];'?>
-<?php  
- echo ' echo ExportMenu::widget(['.
-    '\'dataProvider\' => $dataProvider,'.
-    '\'columns\' => $gridColumns';
-   echo "]);";
-?>
+
 
 
 /* @var $this yii\web\View */
@@ -71,25 +64,38 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
 
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
 <?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
-<?php if(!empty($generator->searchModelClass)): ?>
+<?php if (!empty($generator->searchModelClass)): ?>
 <?= "    <?php " . ($generator->indexWidgetType === 'grid' ? "// " : "") ?>echo $this->render('_search', ['model' => $searchModel]); ?>
 <?php endif; ?>
-
-    <p> <?php echo '<?php if ((Mimin::checkRoute($this->context->id."/create"))){ ?>'; ?>
-        <?= "<?=  " ?>Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass).' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) ?>
-    <?="<?php } ?>" ?>
-    </p>
 
 <?php if ($generator->indexWidgetType === 'grid'): ?>
     <?= "<?= " ?>GridView::widget([
         'dataProvider' => $dataProvider,
-        <?= !empty($generator->searchModelClass) ? "'filterModel' => \$searchModel,\n        'columns' => \$gridColumns," : "'columns' => \$gridColumns, "; ?>
-        'responsive'=>true,
-        'hover'=>true,
-         'resizableColumns'=>true,    
-    ]); ?>
+        'filterModel' => $searchModel,
+        'columns' => $gridColumns,
+        'tableOptions' => ['class' => 'table  table-bordered table-hover'],
+        'striped' => false,
+
+        'pjax' => true,
+        'bordered' => true,
+        'striped' => false,
+        'condensed' => false,
+
+        'panel' => [
+            'type' => GridView::TYPE_INFO,
+             'heading' => '<i class="glyphicon glyphicon-tasks"></i>  <strong> '.<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>. '</strong>',
+      ],
+            'toolbar' => [
+        ['content' => ((Mimin::checkRoute($this->context->id . "/create"))) ?         Html::a(<?= $generator->generateString(Inflector::camel2words(StringHelper::basename($generator->modelClass) . ' Baru')) ?>, ['create'], ['class' => 'btn btn-success']) :""],
+
+        '{export}',
+        '{toggleData}',
+    ],
+
+         'resizableColumns' => true,
+    ]);
+ ?>
 <?php else: ?>
     <?= "<?= " ?>ListView::widget([
         'dataProvider' => $dataProvider,

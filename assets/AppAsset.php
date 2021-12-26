@@ -20,6 +20,9 @@ class AppAsset extends AssetBundle
     public $css = [
 
      "https://fonts.googleapis.com/css?family=Open+Sans:400,600",
+    "libraries/assets/icon/themify-icons/themify-icons.css",
+   "libraries/assets/icon/icofont/css/icofont.css",
+   "libraries/assets/icon/feather/css/feather.css",
         
         'libraries/bower_components/bootstrap/css/bootstrap.min.css',
         'libraries/assets/css/style.css',
@@ -30,6 +33,7 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
+      'js/yii_overrides.js',
 //"libraries/bower_components/jquery/js/jquery.min.js",
    "libraries/bower_components/jquery-ui/js/jquery-ui.min.js",
        "libraries/bower_components/popper.js/js/popper.min.js",
@@ -48,7 +52,7 @@ class AppAsset extends AssetBundle
     public $depends = [
        'yii\web\YiiAsset',
   //  'yii\bootstrap4\BootstrapAsset',
-  //  'rmrevin\yii\fontawesome\AssetBundle',
+    'rmrevin\yii\fontawesome\AssetBundle',
         //additional import of third party alert project
        'app\assets\SweetAlertAsset',
     ];

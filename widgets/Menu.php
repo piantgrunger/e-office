@@ -15,13 +15,16 @@ class Menu extends \yii\widgets\Menu
     /**
      * @inheritdoc
      */
-    public $linkTemplate = '<a href="{url}" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false">{icon} {label}</a>';
+    public $linkTemplate = '<a href="{url}" class="" aria-expanded="false">   <span class="pcoded-micon">{icon} </span>
+                            <span class="pcoded-mtext">{label}</span>
+                            <span class="pcoded-mcaret"></span>
+                        </a>';
     /**
      * @inheritdoc
      * Styles all labels of items on sidebar by AdminLTE
      */
-    public $labelTemplate = '<span class="hide-menu">{label}</span>';
-    public $submenuTemplate = "\n<ul aria-expanded='false' class='collapse  first-level' {show}>\n{items}\n</ul>\n";
+    public $labelTemplate = '{label}';
+    public $submenuTemplate = "\n<ul  class='pcoded-submenu {show}'>\n{items}\n</ul>\n";
     public $activateParents = true;
     public $defaultIconHtml = '<i class="fa fa-circle-o"></i> ';
 
@@ -29,7 +32,7 @@ class Menu extends \yii\widgets\Menu
      * @var string is prefix that will be added to $item['icon'] if it exist.
      * By default uses for Font Awesome (http://fontawesome.io/)
      */
-    public static $iconClassPrefix = 'mdi mdi-';
+    public static $iconClassPrefix = 'feather icon-';
 
     private $noDefaultAction;
     private $noDefaultRoute;
@@ -60,7 +63,7 @@ class Menu extends \yii\widgets\Menu
         $items = $this->normalizeItems($this->items, $hasActiveChild);
         if (!empty($items)) {
             $options = $this->options;
-            $tag = ArrayHelper::remove($options, 'tag', 'ul');
+            $tag = ArrayHelper::remove($options, 'tag', '  ');
 
             echo Html::tag($tag, $this->renderItems($items), $options);
         }
@@ -72,8 +75,11 @@ class Menu extends \yii\widgets\Menu
     protected function renderItem($item)
     {
         if (isset($item['items'])) {
-            $labelTemplate = '<li class="sidebar-item"> <a href="{url}" class="sidebar-link has-arrow waves-effect waves-dark">{icon} {label} </a>';
-            $linkTemplate = '<li class="sidebar-item"><a href="{url}" class="sidebar-link has-arrow waves-effect waves-dark">{icon} {label} </a>';
+            $labelTemplate = '  <span class="pcoded-mtext">{label}</span>';
+            $linkTemplate = '  <li class="pcoded-hasmenu {show}">
+            <a href="{url}" class="" >   <span class="pcoded-micon">{icon} </span>
+            <span class="pcoded-mtext">{label}</span>
+              </a>';
         } else {
             $labelTemplate = $this->labelTemplate;
             $linkTemplate = $this->linkTemplate;
@@ -102,7 +108,7 @@ class Menu extends \yii\widgets\Menu
         $lines = [];
         foreach ($items as $i => $item) {
             $options = array_merge($this->itemOptions, ArrayHelper::getValue($item, 'options', []));
-            $tag = ArrayHelper::remove($options, 'tag', 'li class="sidebar-item"');
+            $tag = ArrayHelper::remove($options, 'tag', 'li');
             $class = [];
             if ($item['active']) {
                 $class[] = $this->activeCssClass;

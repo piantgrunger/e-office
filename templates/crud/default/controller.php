@@ -6,7 +6,6 @@
 use yii\db\ActiveRecordInterface;
 use yii\helpers\StringHelper;
 
-
 /* @var $this yii\web\View */
 /* @var $generator yii\gii\generators\crud\Generator */
 
@@ -107,7 +106,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = new <?= $modelClass ?>();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', <?= $urlParams ?>]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -126,7 +125,7 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
         $model = $this->findModel(<?= $actionParams ?>);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', <?= $urlParams ?>]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -142,16 +141,16 @@ class <?= $controllerClass ?> extends <?= StringHelper::basename($generator->bas
      */
     public function actionDelete(<?= $actionParams ?>)
     {
-        
+
        try
       {
         $this->findModel(<?= $actionParams ?>)->delete();
-      
+
       }
       catch(\yii\db\IntegrityException  $e)
       {
 	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-       } 
+       }
          return $this->redirect(['index']);
     }
 

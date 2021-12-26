@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-view">
 
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
+    <h3><?= "<?= " ?>Html::encode($this->title) ?></h3>
 
     <p>
              <?php echo '<?php if ((Mimin::checkRoute($this->context->id."/update"))){ ?>'; ?>

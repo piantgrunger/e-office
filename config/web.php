@@ -13,8 +13,8 @@ $config = [
      'class' => '\hscstudio\mimin\components\AccessControl',
      'allowActions' => [
         // add wildcard allowed action here!
-       // 'site/logout',
-        'site/*',
+        'site/logout',
+      //  'site/*',
         'debug/*',
         'mimin/*', // only in dev mode
     ],

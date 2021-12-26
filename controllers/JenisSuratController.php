@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Akun;
-use app\models\AkunSearch;
+use app\models\JenisSurat;
+use app\models\JenisSuratSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AkunController implements the CRUD actions for Akun model.
+ * JenisSuratController implements the CRUD actions for JenisSurat model.
  */
-class AkunController extends Controller
+class JenisSuratController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,24 +30,22 @@ class AkunController extends Controller
     }
 
     /**
-     * Lists all Akun models.
+     * Lists all JenisSurat models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AkunSearch();
+        $searchModel = new JenisSuratSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataTree = Akun::find()->orderBy('parent_id,level');
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
-            'dataTree' => $dataTree,
         ]);
     }
 
     /**
-     * Displays a single Akun model.
+     * Displays a single JenisSurat model.
      * @param integer $id
      * @return mixed
      */
@@ -59,16 +57,16 @@ class AkunController extends Controller
     }
 
     /**
-     * Creates a new Akun model.
+     * Creates a new JenisSurat model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Akun();
+        $model = new JenisSurat();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -77,7 +75,7 @@ class AkunController extends Controller
     }
 
     /**
-     * Updates an existing Akun model.
+     * Updates an existing JenisSurat model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -87,7 +85,7 @@ class AkunController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -96,31 +94,36 @@ class AkunController extends Controller
     }
 
     /**
-     * Deletes an existing Akun model.
+     * Deletes an existing JenisSurat model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
      */
     public function actionDelete($id)
     {
-        try {
-            $this->findModel($id)->delete();
-        } catch (\yii\db\IntegrityException  $e) {
-            Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
-        }
-        return $this->redirect(['index']);
+
+       try
+      {
+        $this->findModel($id)->delete();
+
+      }
+      catch(\yii\db\IntegrityException  $e)
+      {
+	Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
+       }
+         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Akun model based on its primary key value.
+     * Finds the JenisSurat model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Akun the loaded model
+     * @return JenisSurat the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Akun::findOne($id)) !== null) {
+        if (($model = JenisSurat::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

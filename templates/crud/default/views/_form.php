@@ -32,8 +32,7 @@ use yii\bootstrap4\ActiveForm;
 <?php foreach ($generator->getColumnNames() as $attribute) {
     if ((in_array($attribute, $safeAttributes))
     &&
-     (!in_array($attribute, ['created_at','updated_at'])))
-    {
+     (!in_array($attribute, ['created_at','updated_at','created_by','updated_by']))) {
         echo "    <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
     }
 } ?>

@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 
             <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
@@ -7,7 +12,7 @@
                             <i class="feather icon-menu"></i>
                         </a>
                         <a href="index-1.htm">
-                            <img class="img-fluid" src="libraries\assets\images\logo.png" alt="Theme-Logo">
+                            <img class="img-fluid" src="<?=Url::to(["libraries/assets/images/logo.png"])?>"  alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -16,16 +21,7 @@
 
                     <div class="navbar-container container-fluid">
                         <ul class="nav-left">
-                            <li class="header-search">
-                                <div class="main-search morphsearch-search">
-                                    <div class="input-group">
-                                        <span class="input-group-addon search-close"><i class="feather icon-x"></i></span>
-                                        <input type="text" class="form-control">
-                                        <span class="input-group-addon search-btn"><i class="feather icon-search"></i></span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
+                          <li>
                                 <a href="#!" onclick="javascript:toggleFullScreen()">
                                     <i class="feather icon-maximize full-screen"></i>
                                 </a>
@@ -88,32 +84,12 @@
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="libraries\assets\images\avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span>John Doe</span>
+                                        <span><?=Yii::$app->user->identity->username?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         <li>
-                                            <a href="#!">
-                                                <i class="feather icon-settings"></i> Settings
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="user-profile.htm">
-                                                <i class="feather icon-user"></i> Profile
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="email-inbox.htm">
-                                                <i class="feather icon-mail"></i> My Messages
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-lock-screen.htm">
-                                                <i class="feather icon-lock"></i> Lock Screen
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="auth-normal-sign-in.htm">
+                                            <a href="<?=Url::to(['site/logout'])?>" data-method="POST">
                                                 <i class="feather icon-log-out"></i> Logout
                                             </a>
                                         </li>
