@@ -18,6 +18,15 @@ $menuItems =
 ['label' => 'User', 'icon' => 'users', 'url' => ['/user/'], 'visible' => !Yii::$app->user->isGuest],
 ], ],
 
+[
+    'visible' => !Yii::$app->user->isGuest,
+    'label' => 'Master',
+    'icon' => 'disc',
+    'url' => '#',
+    'items' => [
+ ['label' => 'Jenis Surat', 'icon' => 'external-link', 'url' => ['/jenis-surat/'], 'visible' => !Yii::$app->user->isGuest],
+ ], ],
+ 
 ];
 
 
