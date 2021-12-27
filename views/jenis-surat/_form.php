@@ -12,6 +12,8 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
+        <?= $form->field($model, 'kode')->textInput(['maxlength' => true]) ?>
+
 
     <?= $form->field($model, 'nama')->textInput(['maxlength' => true]) ?>
 

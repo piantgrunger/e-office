@@ -17,7 +17,6 @@ class Menu extends \yii\widgets\Menu
      */
     public $linkTemplate = '<a href="{url}" class="" aria-expanded="false">   <span class="pcoded-micon">{icon} </span>
                             <span class="pcoded-mtext">{label}</span>
-                            <span class="pcoded-mcaret"></span>
                         </a>';
     /**
      * @inheritdoc

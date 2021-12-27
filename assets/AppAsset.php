@@ -20,6 +20,8 @@ class AppAsset extends AssetBundle
     public $css = [
 
      "https://fonts.googleapis.com/css?family=Open+Sans:400,600",
+     'https://use.fontawesome.com/releases/v5.7.2/css/all.css',
+   
     "libraries/assets/icon/themify-icons/themify-icons.css",
    "libraries/assets/icon/icofont/css/icofont.css",
    "libraries/assets/icon/feather/css/feather.css",
@@ -52,7 +54,7 @@ class AppAsset extends AssetBundle
     public $depends = [
        'yii\web\YiiAsset',
   //  'yii\bootstrap4\BootstrapAsset',
-    'rmrevin\yii\fontawesome\AssetBundle',
+//    'rmrevin\yii\fontawesome\AssetBundle',
         //additional import of third party alert project
        'app\assets\SweetAlertAsset',
     ];

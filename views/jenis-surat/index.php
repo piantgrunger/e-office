@@ -7,6 +7,7 @@ use app\widgets\grid\GridView;
 use yii\widgets\Pjax;
 
 $gridColumns=[['class' => 'yii\grid\SerialColumn'],
+            'kode',
             'nama',
             'keterangan:ntext',
 

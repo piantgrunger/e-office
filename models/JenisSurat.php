@@ -27,7 +27,9 @@ class JenisSurat extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nama', 'keterangan'], 'required'],
+            [['nama', 'kode'], 'required'],
+            ['kode', 'unique'],
+            
             [['keterangan'], 'string'],
             [['nama'], 'string', 'max' => 100],
         ];

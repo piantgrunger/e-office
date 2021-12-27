@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\JenisSurat;
+use app\models\SuratMasuk;
 
 /**
- * JenisSuratSearch represents the model behind the search form of `app\models\JenisSurat`.
+ * SuratMasukSearch represents the model behind the search form of `app\models\SuratMasuk`.
  */
-class JenisSuratSearch extends JenisSurat
+class SuratMasukSearch extends SuratMasuk
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class JenisSuratSearch extends JenisSurat
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['nama', 'keterangan','kode'], 'safe'],
+            [['id', 'id_jenis_surat'], 'integer'],
+            [['nomor_surat', 'sifat', 'tgl_surat', 'tgl_terima', 'asal_surat', 'perihal', 'file_surat'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class JenisSuratSearch extends JenisSurat
      */
     public function search($params)
     {
-        $query = JenisSurat::find();
+        $query = SuratMasuk::find();
 
         // add conditions that should always apply here
 
@@ -60,11 +60,16 @@ class JenisSuratSearch extends JenisSurat
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'id_jenis_surat' => $this->id_jenis_surat,
+            'tgl_surat' => $this->tgl_surat,
+            'tgl_terima' => $this->tgl_terima,
         ]);
 
-        $query->andFilterWhere(['like', 'nama', $this->nama])
-        ->andFilterWhere(['like', 'kode', $this->kode])
-            ->andFilterWhere(['like', 'keterangan', $this->keterangan]);
+        $query->andFilterWhere(['like', 'nomor_surat', $this->nomor_surat])
+            ->andFilterWhere(['like', 'sifat', $this->sifat])
+            ->andFilterWhere(['like', 'asal_surat', $this->asal_surat])
+            ->andFilterWhere(['like', 'perihal', $this->perihal])
+            ->andFilterWhere(['like', 'file_surat', $this->file_surat]);
 
         return $dataProvider;
     }
