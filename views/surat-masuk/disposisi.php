@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Asal dan Isi Surat',
                 'format' => 'raw',
                 'value' => function ($model) {
-                    return  strtoupper($model->asal_surat).' <hr>  '. $model->perihal;
+                    return ($model->pengirim? $model->pengirim->nama_satuan_kerja :  strtoupper($model->asal_surat)).' <hr>  '. $model->perihal;
                 }
             ] ,
             [

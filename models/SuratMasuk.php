@@ -42,7 +42,6 @@ class SuratMasuk extends \yii\db\ActiveRecord
                 $this->upload($file);
             }
         
-            
             return true;
         } else {
             return false;
@@ -85,8 +84,8 @@ class SuratMasuk extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nomor_surat', 'id_jenis_surat', 'sifat', 'tgl_surat', 'tgl_terima', 'asal_surat', 'perihal','id_satuan_kerja'], 'required'],
-            [['id_jenis_surat'], 'integer'],
+            [['nomor_surat', 'id_jenis_surat', 'sifat', 'tgl_surat', 'tgl_terima', 'perihal','id_satuan_kerja'], 'required'],
+            [['id_jenis_surat','id_pengirim'], 'integer'],
             [['tgl_surat', 'tgl_terima'], 'safe'],
             [['nomor_surat', 'sifat', 'asal_surat',], 'string', 'max' => 100],
             [$this->_berkas,'file','skipOnEmpty' => true, 'extensions' => 'pdf', 'maxSize' => 1024 * 1024 * 100, 'tooBig' => 'File tidak boleh lebih dari 100MB'  ],
@@ -125,5 +124,10 @@ class SuratMasuk extends \yii\db\ActiveRecord
     public function getDisposisi()
     {
         return $this->hasMany(Disposisi::className(), ['id_surat_masuk' => 'id']);
+    }
+
+    public function getPengirim()
+    {
+        return $this->hasOne(SatuanKerja::className(), ['id_satuan_kerja' => 'id_pengirim']);
     }
 }

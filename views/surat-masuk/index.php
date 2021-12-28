@@ -18,9 +18,10 @@ $gridColumns=[['class' => 'yii\grid\SerialColumn'],
     'label' => 'Asal dan Isi Surat',
     'format' => 'raw',
     'value' => function ($model) {
-        return  strtoupper($model->asal_surat).' <hr>  '. $model->perihal;
+        return "<b> Pengirim : </b>" .($model->pengirim? $model->pengirim->nama_satuan_kerja :  strtoupper($model->asal_surat)).' <hr style="dotted">  '. $model->perihal.'<hr style="dotted"><center>' .Html::a('File Surat', ['/document/'.$model->file_surat], ['class' => 'btn btn-success btn-sm btn-waves' , 'target' => '_blank']) ."</center>";
     }
 ] ,
+
 
 // 'tgl_terima',
             // 'asal_surat',

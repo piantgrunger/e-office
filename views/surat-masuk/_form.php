@@ -15,7 +15,9 @@ use yii\helpers\Url;
 
 <div class="surat-masuk-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+          'layout' => 'horizontal'
+    ]); ?>
         <?= $form->errorSummary($model) ?> <!-- ADDED HERE -->
 
         <?php
@@ -68,11 +70,17 @@ use yii\helpers\Url;
     ]) ?>
     
 
-
+   
+    <?=$form->field($model, 'id_pengirim')->widget(Select2::className(), [
+        'data'=>ArrayHelper::map(app\models\SatuanKerja::find()->select(['id_satuan_kerja','nama_satuan_kerja'])->asArray()->all(), 'id_satuan_kerja', 'nama_satuan_kerja'),
+        'options'=>['placeholder'=>'Pilih Pengirim Surat Internal'],
+        'pluginOptions'=>['allowClear'=>true],
+    ])->label('Asal Pengirim Surat Internal');?>
     
 
     <?= $form->field($model, 'asal_surat')->textInput(['maxlength' => true,
-        'placeholder' => 'Asal Pengirim Surat']) ?>
+        'placeholder' => 'Asal Pengirim Surat External'])
+        ->label('Asal Pengirim Surat External') ?>
     
 
     <?= $form->field($model, 'perihal')->textArea(['rows' => 6]) ?>
