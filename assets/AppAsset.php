@@ -17,6 +17,15 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
+    public function init()
+    {
+        parent::init();
+        // resetting BootstrapAsset to not load own css files
+        \Yii::$app->assetManager->bundles['yii\\bootstrap4\\BootstrapAsset'] = [
+            'css' => [],
+            'js' => []
+        ];
+    }
     public $css = [
 
      "https://fonts.googleapis.com/css?family=Open+Sans:400,600",

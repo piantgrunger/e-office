@@ -25,8 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="surat-masuk-view">
 
-    <h3><?= Html::encode($this->title) ?></h3>
-
+   
   
     <?= DetailView::widget([
         'model' => $model,
@@ -61,8 +60,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
     //    'filterModel' => $searchModel,
         'columns' => [
-            'tgl_disposisi',
-            'catatan_disposisi'
+            'tanggal_disposisi:date',
+            'pegawai.nama_lengkap',
+            'pegawai.nama_jabatan',
+            'status_disposisi',
+            'catatan_disposisi',
         ],
            ]);
  ?>

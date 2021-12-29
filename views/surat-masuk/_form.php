@@ -70,6 +70,18 @@ use yii\helpers\Url;
     ]) ?>
     
 
+    <?= $form->field($model, 'tgl_terima')->widget(DateControl::className(), [
+        'type'=>DateControl::FORMAT_DATETIME,
+        'widgetOptions' => [
+            'type' => 1,
+            'pluginOptions' => [
+                'autoclose' => true,
+               
+                
+            ]
+        ]
+    ]) ?>
+    
    
     <?=$form->field($model, 'id_pengirim')->widget(Select2::className(), [
         'data'=>ArrayHelper::map(app\models\SatuanKerja::find()->select(['id_satuan_kerja','nama_satuan_kerja'])->asArray()->all(), 'id_satuan_kerja', 'nama_satuan_kerja'),
@@ -84,6 +96,9 @@ use yii\helpers\Url;
     
 
     <?= $form->field($model, 'perihal')->textArea(['rows' => 6]) ?>
+    <?= $form->field($model, 'isi_surat')->textArea(['rows' => 6]) ?>
+    
+
 
     <?= $form->field($model, 'file_surat')->widget(FileInput::className(), [
   'options' => ['accept' => 'PDF'],

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Disposisi;
 use Yii;
 use app\models\SuratMasuk;
 use app\models\SuratMasukSearch;
@@ -73,8 +74,17 @@ class SuratMasukController extends Controller
         $model->saveOld();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->tgl_terima =date("Y-m-d H:i:s");
             if ($model->save()) {
+                /** Disposisi ke pimpinan SKPD */
+                $disposisi =  new  Disposisi();
+                $disposisi->id_surat_masuk = $model->id;
+                $disposisi->id_user = Yii::$app->user->identity->id;
+                $disposisi->id_pegawai = $model->satuanKerja->personPimpinan->id_pegawai;
+                $disposisi->tanggal_disposisi = date('Y-m-d');
+                $disposisi->status_disposisi = 'Belum Diterima';
+                $disposisi->save(false);
+
+
                 return $this->redirect(['index']);
             }
             return $this->render('create', [

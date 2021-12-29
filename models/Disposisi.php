@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property int $id_surat_masuk
- * @property int $id_jabatan
+ * @property int $id_pegawai
  * @property int|null $id_user
  * @property string $tanggal_disposisi
  * @property string $status_disposisi
@@ -33,8 +33,8 @@ class Disposisi extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_surat_masuk', 'id_jabatan', 'tanggal_disposisi', 'status_disposisi', 'catatan_disposisi'], 'required'],
-            [['id_surat_masuk', 'id_jabatan', 'id_user'], 'integer'],
+            [['id_surat_masuk', 'id_pegawai', 'tanggal_disposisi', 'status_disposisi', 'catatan_disposisi'], 'required'],
+            [['id_surat_masuk', 'id_pegawai', 'id_user'], 'integer'],
             [['tanggal_disposisi', 'tanggal_diterima'], 'safe'],
             [['catatan_disposisi', 'jawaban_disposisi'], 'string'],
             [['status_disposisi'], 'string', 'max' => 255],
@@ -49,7 +49,7 @@ class Disposisi extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'id_surat_masuk' => 'Id Surat Masuk',
-            'id_jabatan' => 'Tujuan Disposisi',
+            'id_pegawai' => 'Tujuan Disposisi',
             'id_user' => 'Pembuat Disposisi',
             'tanggal_disposisi' => 'Tanggal Disposisi',
             'status_disposisi' => 'Status Disposisi',
@@ -57,5 +57,10 @@ class Disposisi extends \yii\db\ActiveRecord
             'tanggal_diterima' => 'Tanggal Diterima',
             'jawaban_disposisi' => 'Jawaban Disposisi',
         ];
+    }
+
+    public function getPegawai()
+    {
+        return $this->hasOne(Pegawai::className(), ['id_pegawai' => 'id_pegawai']);
     }
 }

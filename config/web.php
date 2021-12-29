@@ -35,14 +35,14 @@ $config = [
             'displaySettings' => [
                 Module::FORMAT_DATE => 'dd-MM-yyyy',
                 Module::FORMAT_TIME => 'hh:mm:ss a',
-                Module::FORMAT_DATETIME => 'dd-MM-yyyy hh:mm:ss a',
+                Module::FORMAT_DATETIME => 'dd-MM-yyyy H:i:s ',
             ],
 
             // format settings for saving each date attribute (PHP format example)
             'saveSettings' => [
                 Module::FORMAT_DATE => 'yyyy-MM-dd', // saves as unix timestamp
                 Module::FORMAT_TIME => 'php:H:i:s',
-                Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
+                Module::FORMAT_DATETIME => 'yyyy-MM-dd H:i:s',
             ],
 
             // set your display timezone
@@ -56,8 +56,8 @@ $config = [
 
             // default settings for each widget from kartik\widgets used when autoWidget is true
             'autoWidgetSettings' => [
-                Module::FORMAT_DATE => ['type' => 2, 'pluginOptions' => ['autoclose' => true]], // example
-                Module::FORMAT_DATETIME => [], // setup if needed
+                Module::FORMAT_DATE => ['type' => 1, 'pluginOptions' => ['autoclose' => true]], // example
+                Module::FORMAT_DATETIME => ['type' => 1, 'pluginOptions' => ['autoclose' => true]], // setup if needed
                 Module::FORMAT_TIME => [], // setup if needed
             ],
 
