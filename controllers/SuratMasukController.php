@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\Disposisi;
 use Yii;
 use app\models\SuratMasuk;
+use app\models\DisposisiSearch;
+
 use app\models\SuratMasukSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -34,6 +36,18 @@ class SuratMasukController extends Controller
      * Lists all SuratMasuk models.
      * @return mixed
      */
+
+    public function actionIndexDisposisi()
+    {
+        $searchModel = new DisposisiSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+    
+        return $this->render('index-disposisi', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+    }
+
     public function actionIndex()
     {
         $searchModel = new SuratMasukSearch();
@@ -58,6 +72,14 @@ class SuratMasukController extends Controller
     }
     public function actionDisposisi($id)
     {
+        if (Yii::$app->user->identity->pegawai) {
+            $id_pegawai = Yii::$app->user->identity->pegawai->id_pegawai;
+            $model = Disposisi::find()->where(['id_surat_masuk'=>$id, 'id_pegawai'=>$id_pegawai])->one();
+            if ($model && $model->status_disposisi == 'Belum Diterima') {
+                $model->status_disposisi = 'Sudah Dibaca';
+                $model->save(false);
+            }
+        }
         return $this->render('disposisi', [
             'model' => $this->findModel($id),
         ]);
@@ -74,14 +96,18 @@ class SuratMasukController extends Controller
         $model->saveOld();
 
         if ($model->load(Yii::$app->request->post())) {
+            $no_agenda = SuratMasuk::find()->where(['id_satuan_kerja'=>$model->id_satuan_kerja])->max('no_agenda');
+            $model->no_agenda = $no_agenda + 1;
+            $model->tgl_terima = date('Y-m-d H:i:s');
             if ($model->save()) {
+
                 /** Disposisi ke pimpinan SKPD */
                 $disposisi =  new  Disposisi();
                 $disposisi->id_surat_masuk = $model->id;
-                $disposisi->id_user = Yii::$app->user->identity->id;
                 $disposisi->id_pegawai = $model->satuanKerja->personPimpinan->id_pegawai;
                 $disposisi->tanggal_disposisi = date('Y-m-d');
                 $disposisi->status_disposisi = 'Belum Diterima';
+                $disposisi->catatan_disposisi = 'Surat masuk dari '.$model->pengirim_surat ." Tanggal ". Yii::$app->formatter->asDate($model->tgl_surat);
                 $disposisi->save(false);
 
 

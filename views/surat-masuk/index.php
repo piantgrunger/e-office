@@ -10,6 +10,8 @@ $gridColumns=[['class' => 'yii\grid\SerialColumn'],
  'no_agenda',
 [
     'label' => 'Nomor Surat - Tanggal Surat',
+    
+
   'format' => 'raw',
     'value' => function ($model) {
         return $model->nomor_surat.' <br>  <b>Tanggal: </b>'. (Yii::$app->formatter->asDate($model->tgl_surat)) ."<br>".
@@ -19,8 +21,10 @@ $gridColumns=[['class' => 'yii\grid\SerialColumn'],
 [
     'label' => 'Asal dan Isi Surat',
     'format' => 'raw',
+    'contentOptions' => ['style' => 'width:50%; white-space: normal;'],
+
     'value' => function ($model) {
-        return "<b> Pengirim : </b>" .($model->pengirim? $model->pengirim->nama_satuan_kerja :  strtoupper($model->asal_surat)).' <hr style="dotted">  '. $model->perihal .'<br>'.$model->isi_surat.'<hr style="dotted"><center>' .Html::a('File Surat', ['/document/'.$model->file_surat], ['class' => 'btn btn-success btn-sm btn-waves' , 'target' => '_blank']) ."</center>";
+        return "<b> Pengirim : </b>" .($model->pengirim_surat).' <hr style="dotted">  '. $model->perihal .'<br>'.$model->isi_surat.'<hr style="dotted"><center>' .Html::a('File Surat', ['/document/'.$model->file_surat], ['class' => 'btn btn-success btn-sm btn-waves' , 'target' => '_blank']) ."</center>";
     }
 ] ,
 
@@ -55,11 +59,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p> <?php if ((Mimin::checkRoute($this->context->id."/create"))) { ?>        <?=  Html::a('Surat Masuk Baru', ['create'], ['class' => 'btn btn-success']) ?>
     <?php } ?>    </p>
-    <?= GridView::widget([
+    <div class="table-responsive">
+            <?= GridView::widget([
         'dataProvider' => $dataProvider,
       //  'filterModel' => $searchModel,
         'columns' => $gridColumns,
            ]);
  ?>
     <?php Pjax::end(); ?>
+</div>
 </div>

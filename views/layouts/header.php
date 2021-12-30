@@ -83,7 +83,7 @@ use yii\helpers\Url;
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="libraries\assets\images\avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <img src="<?=Yii::$app->user->identity->pegawai?"https://banjarbaru-bagawi.id/media/".Yii::$app->user->identity->pegawai->foto:Url::to(["/libraries/assets/images/avatar-2.jpg"])?>" class="img-radius" alt="User-Profile-Image">
                                         <span><?=Yii::$app->user->identity->username?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>

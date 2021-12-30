@@ -69,18 +69,6 @@ use yii\helpers\Url;
         ]
     ]) ?>
     
-
-    <?= $form->field($model, 'tgl_terima')->widget(DateControl::className(), [
-        'type'=>DateControl::FORMAT_DATETIME,
-        'widgetOptions' => [
-            'type' => 1,
-            'pluginOptions' => [
-                'autoclose' => true,
-               
-                
-            ]
-        ]
-    ]) ?>
     
    
     <?=$form->field($model, 'id_pengirim')->widget(Select2::className(), [

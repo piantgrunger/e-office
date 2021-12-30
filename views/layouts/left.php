@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+use hscstudio\mimin\components\Mimin;
 
 $menuItems =
 [

@@ -136,4 +136,9 @@ class SuratMasuk extends \yii\db\ActiveRecord
     {
         return $this->hasOne(SatuanKerja::className(), ['id_satuan_kerja' => 'id_satuan_kerja']);
     }
+
+    public function getPengirim_surat()
+    {
+        return $this->pengirim? $this->pengirim->nama_satuan_kerja :  strtoupper($this->asal_surat);
+    }
 }

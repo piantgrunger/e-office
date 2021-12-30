@@ -63,4 +63,18 @@ class Disposisi extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Pegawai::className(), ['id_pegawai' => 'id_pegawai']);
     }
+
+    public function getSuratMasuk()
+    {
+        return $this->hasOne(SuratMasuk::className(), ['id' => 'id_surat_masuk']);
+    }
+
+    public function getLabel_disposisi()
+    {
+        $label = [
+            'Belum Diterima' => 'secondary',
+            'Sudah Dibaca' => 'info',
+        ];
+        return "<label class='badge badge-".$label[$this->status_disposisi]."'>".$this->status_disposisi."</label>";
+    }
 }

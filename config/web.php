@@ -110,7 +110,7 @@ $config = [
         'formatter' => [
             'class' => 'yii\i18n\Formatter',
             'nullDisplay' => '',
-            'dateFormat' => 'd MMMM Y',
+            'dateFormat' => 'd MMMM y',
             'locale' => 'id-ID',
     
         ],
