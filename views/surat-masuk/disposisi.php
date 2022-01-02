@@ -1,6 +1,6 @@
 <?php
 
-use app\widgets\grid\GridView;
+use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -79,9 +79,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                 <div class="media-body">
                                                                     <h6 class="media-heading txt-primary"><?=$detail->pegawai->nama_lengkap?> - <?=$detail->pegawai->nama_jabatan?> <span class="f-12 text-muted m-l-5"><?=Yii::$app->formatter->asDate($detail->tanggal_disposisi)?></span></h6>
                                                                     <p><?=$detail->catatan_disposisi?></p>
+                                                                    <p><?=$detail->jawaban_disposisi?></p>
+                                                                    
                                                                     <div class="m-t-10 m-b-25">
-                                                                        <span class="f-14  "> <?=$detail->label_disposisi?></span> <hr style="dashed">
-                                                                        <span><a href="#!" class="m-r-14 f-12 btn btn btn-primary btn-waves">Disposisi</a> </span>
+                                                                        <span class="f-14  "> <?=$detail->label_disposisi?></span> 
+                                                                        <?php if (Yii::$app->user->identity->id_pegawai === $detail->id_pegawai) {?>
+                                                                            <hr style="dashed">
+                                                                        <span><a href="<?=Url::to(["create-disposisi",'id_disposisi'=>$detail->id,'id_surat_masuk'=>$detail->id_surat_masuk])?>" class="m-r-14 f-12 btn btn btn-primary btn-waves btn-sm">Disposisikan</a> </span>
+                                                                        <?php } ?>
                                                                     </div>
                                                                     <hr>
                                                                 </div>

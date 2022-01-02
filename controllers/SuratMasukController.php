@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Disposisi;
+use app\models\DisposisiDetail;
 use Yii;
 use app\models\SuratMasuk;
 use app\models\DisposisiSearch;
@@ -85,6 +86,36 @@ class SuratMasukController extends Controller
         ]);
     }
 
+    public function actionCreateDisposisi($id_disposisi, $id_surat_masuk)
+    {
+        $model = new Disposisi();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $disposisiDetails = Yii::$app->request->post('DisposisiDetail');
+            foreach ($disposisiDetails as $key => $disposisiDetail) {
+                $modelDisposisiDetail = new Disposisi();
+                $modelDisposisiDetail->id_surat_masuk = $id_surat_masuk;
+                $modelDisposisiDetail->id_parent = $id_disposisi;
+                $modelDisposisiDetail->catatan_disposisi = $model->catatan_disposisi;
+                $modelDisposisiDetail->tanggal_disposisi = date('Y-m-d');
+                $modelDisposisiDetail->status_disposisi = 'Belum Diterima';
+          
+
+                $modelDisposisiDetail->id_pegawai = $disposisiDetail['id_pegawai'];
+                $modelDisposisiDetail->save(false);
+            }
+            $model = Disposisi::find()->where([ 'id'=>$id_disposisi])->one();
+            $model->status_disposisi = 'Di Disposisikan';
+            $model->save(false);
+            return $this->redirect(['disposisi','id'=>$id_surat_masuk]);
+        }
+        return $this->render('create-disposisi', [
+            'model' => $model,
+            'id_disposisi' => $id_disposisi,
+            'id_surat_masuk' => $id_surat_masuk,
+           'disposisiDetails' => [new DisposisiDetail()],
+        ]);
+    }
     /**
      * Creates a new SuratMasuk model.
      * If creation is successful, the browser will be redirected to the 'view' page.

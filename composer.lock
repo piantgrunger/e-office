@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "25ece37da3ff88d59b2d2e8342466411",
+    "content-hash": "fba25a198b1be7fefbdc5860a2b155e5",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -2907,6 +2907,57 @@
                 "source": "https://github.com/mdmsoft/yii2-ar-behaviors"
             },
             "time": "2018-12-26T04:59:14+00:00"
+        },
+        {
+            "name": "mdmsoft/yii2-widgets",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mdmsoft/yii2-widgets.git",
+                "reference": "8285ee4bbc577af4f262db077b3d42778c829681"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mdmsoft/yii2-widgets/zipball/8285ee4bbc577af4f262db077b3d42778c829681",
+                "reference": "8285ee4bbc577af4f262db077b3d42778c829681",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.4"
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "mdm\\widgets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Misbahul Munir",
+                    "email": "misbahuldmunir@gmail.com"
+                }
+            ],
+            "description": "Widgets for Yii2",
+            "keywords": [
+                "tabular input",
+                "widgets",
+                "yii"
+            ],
+            "support": {
+                "issues": "https://github.com/mdmsoft/yii2-widgets/issues",
+                "source": "https://github.com/mdmsoft/yii2-widgets"
+            },
+            "time": "2020-10-20T05:29:00+00:00"
         },
         {
             "name": "mpdf/mpdf",

@@ -34,7 +34,7 @@ class Disposisi extends \yii\db\ActiveRecord
     {
         return [
             [['id_surat_masuk', 'id_pegawai', 'tanggal_disposisi', 'status_disposisi', 'catatan_disposisi'], 'required'],
-            [['id_surat_masuk', 'id_pegawai', 'id_user'], 'integer'],
+            [['id_surat_masuk', 'id_pegawai', 'id_parent'], 'integer'],
             [['tanggal_disposisi', 'tanggal_diterima'], 'safe'],
             [['catatan_disposisi', 'jawaban_disposisi'], 'string'],
             [['status_disposisi'], 'string', 'max' => 255],
@@ -74,6 +74,7 @@ class Disposisi extends \yii\db\ActiveRecord
         $label = [
             'Belum Diterima' => 'secondary',
             'Sudah Dibaca' => 'info',
+            'Di Disposisikan' => 'warning',
         ];
         return "<label class='badge badge-".$label[$this->status_disposisi]."'>".$this->status_disposisi."</label>";
     }
