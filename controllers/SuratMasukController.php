@@ -116,6 +116,19 @@ class SuratMasukController extends Controller
            'disposisiDetails' => [new DisposisiDetail()],
         ]);
     }
+
+    public function actionJawabDisposisi($id)
+    {
+        $model = Disposisi::find()->where(['id'=>$id])->one();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->status_disposisi = 'Sudah Dikerjakan';
+            $model->save(false);
+            return $this->redirect(['disposisi','id'=>$model->id_surat_masuk]);
+        }
+        return $this->render('jawab-disposisi', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Creates a new SuratMasuk model.
      * If creation is successful, the browser will be redirected to the 'view' page.

@@ -86,6 +86,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                         <?php if (Yii::$app->user->identity->id_pegawai === $detail->id_pegawai) {?>
                                                                             <hr style="dashed">
                                                                         <span><a href="<?=Url::to(["create-disposisi",'id_disposisi'=>$detail->id,'id_surat_masuk'=>$detail->id_surat_masuk])?>" class="m-r-14 f-12 btn btn btn-primary btn-waves btn-sm">Disposisikan</a> </span>
+                                                                        <span><a href="<?=Url::to(["jawab-disposisi",'id'=>$detail->id])?>" class="m-r-14 f-12 btn btn btn-info btn-waves btn-sm">Jawab Disposisi</a> </span>
+                                  
                                                                         <?php } ?>
                                                                     </div>
                                                                     <hr>

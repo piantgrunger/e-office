@@ -46,45 +46,6 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         ];
     }
   
-    public function afterSave($insert, $changedAttributes)
-    {
-       
-          $redis = UserRedis::find()->where(['id'=> $this->id ])->one();
-          if(is_null($redis)) {
-            $redis = new UserRedis();
-          }
-      //   var_dump($redis->attributes);
-         $att =[
- 
-           'username',
-           'auth_key',
-           'password_hash',
-            'password_reset_token',
-            'email'	,
-            'status',
-            'created_at',
-            'updated_at',
-            'id_pegawai',
-            'id_satuan_kerja',
-            'role_id',
-            'id_ruang',
-            'telegram_id',
-            'deviceId',
-            'deviceName',
-
-         ];
-         foreach ($att as $key) {
-           if ($key <>'') {
-               $redis->$key= $this->$key;
-         }
-         }  
-         $redis->save(false);
-   
-      
-       parent::afterSave($insert, $changedAttributes);
-      
-      
-    }
 
     /**
      * {@inheritdoc}
@@ -142,18 +103,13 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {
         return Yii::$app->security->validatePassword($password, $this->password_hash);
-      
-      
     }
   
     public function generateDeviceId($deviceName)
     {
-           $this->deviceId = Yii::$app->security->generateRandomString();
-           $this->deviceName = $deviceName;
-           $this->save(false);
-          
-        
-      
+        $this->deviceId = Yii::$app->security->generateRandomString();
+        $this->deviceName = $deviceName;
+        $this->save(false);
     }
 
     /**

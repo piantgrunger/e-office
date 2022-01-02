@@ -75,6 +75,7 @@ class Disposisi extends \yii\db\ActiveRecord
             'Belum Diterima' => 'secondary',
             'Sudah Dibaca' => 'info',
             'Di Disposisikan' => 'warning',
+            'Sudah Dikerjakan' => 'success',
         ];
         return "<label class='badge badge-".$label[$this->status_disposisi]."'>".$this->status_disposisi."</label>";
     }
