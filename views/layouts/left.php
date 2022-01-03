@@ -25,7 +25,21 @@ $menuItems =
     'icon' => 'disc',
     'url' => '#',
     'items' => [
- ['label' => 'Jenis Surat', 'icon' => 'external-link', 'url' => ['/jenis-surat/'], 'visible' => !Yii::$app->user->isGuest],
+ ['label' => 'Jenis Surat', 'icon' => 'external-link', 'url' => ['/jenis-surat/index'], 'visible' => !Yii::$app->user->isGuest],
+ ], ],
+ 
+
+
+[
+    'visible' => !Yii::$app->user->isGuest,
+    'label' => 'Surat Masuk',
+    'icon' => 'inbox',
+    'url' => '#',
+    'items' => [
+ ['label' => 'Surat Masuk', 'icon' => 'external-link', 'url' => ['/surat-masuk/index'], 'visible' => !Yii::$app->user->isGuest],
+ ['label' => 'Disposisi', 'icon' => 'external-link', 'url' => ['/surat-masuk/index-disposisi'], 'visible' => !Yii::$app->user->isGuest],
+ 
+ 
  ], ],
  
 ];
