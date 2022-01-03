@@ -48,38 +48,28 @@ class LoginForm extends Model
                      
             if (!$user || !$user->validatePassword($this->password)) {
                 $this->addError($attribute, 'Kombinasi Username dan Password Salah');
-            } 
-            
-          if(!is_null($user)){
-            if(!is_null($user->id_satuan_kerja) && ($user->id_satuan_kerja !=='') ) {
-               date_default_timezone_set('Asia/Makassar');
-              
-               if((date('H:i') <'09:00' || date('H:i') >'15:30') &&
-               (date('H:i') <'16:00'))
-               {
-                 $this->addError($attribute, 'Admin SKPD  Belum bisa login (09:00-15:30 dan di atas pukul 16:00)   ');
-                 
-               }  
-              
-              
             }
-            if(!is_null($user->id_pegawai) ) {
-              if((!is_null($user->deviceId) && $user->deviceId!=='') || (!is_null($this->deviceId) && $this->deviceId!=='')  ) {
-                 if($user->deviceId !== $this->deviceId) {
-                        //$this->addError($attribute, 'Gadget yang digunakan tidak sesuai atau  sudah pernah dipake user lain  hubungi administrator untuk perubahan gadget');
-    
-                 } 
-                 
-                
-              } else {
-                 $user->generateDeviceId($this->deviceName);
-              }
-              
-              
-            } 
             
-          }
-            
+            if (!is_null($user)) {
+                if ($user->pegawai) {
+                    $id_satker = $user->pegawai->id_satuan_kerja;
+                    $satKer = SatuanKerja::findOne($id_satker);
+                    if ($satKer->status_eoffice == 0) {
+                        $this->addError($attribute, 'Satuan Kerja Anda Belum Diaktifkan untuk mengakses Applikasi Ini');
+                        return false;
+                    }
+                } else {
+                    $id_satker =0;
+                    $id_satker = $user->id_satuan_kerja;
+                    if ($id_satker != 0) {
+                        $satKer = SatuanKerja::findOne($id_satker);
+                        if ($satKer->status_eoffice == 0) {
+                            $this->addError($attribute, 'Satuan Kerja Anda Belum Diaktifkan untuk mengakses Applikasi Ini');
+                            return false;
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -90,8 +80,7 @@ class LoginForm extends Model
      */
     public function login()
     {
-        if ($this->validate()) {        
-          
+        if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         } else {
             return false;
@@ -107,7 +96,7 @@ class LoginForm extends Model
     {
         if ($this->_user === null) {
             $this->_user = User::findByUsername($this->username);
-         }
+        }
    
 
         return $this->_user;

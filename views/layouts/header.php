@@ -11,7 +11,7 @@ use yii\helpers\Url;
                         <a class="mobile-menu" id="mobile-collapse" href="#!">
                             <i class="feather icon-menu"></i>
                         </a>
-                        <a href="index-1.htm">
+                        <a href="<?=Url::to(['/'])?>">
                             <img class="img-fluid" src="<?=Url::to(["libraries/assets/images/logo.png"])?>"  alt="Theme-Logo">
                         </a>
                         <a class="mobile-options">
@@ -28,6 +28,7 @@ use yii\helpers\Url;
                             </li>
                         </ul>
                         <ul class="nav-right">
+                            <!--
                             <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
@@ -80,6 +81,7 @@ use yii\helpers\Url;
                                     </div>
                                 </div>
                             </li>
+-->
                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
