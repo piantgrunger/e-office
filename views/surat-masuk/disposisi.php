@@ -1,4 +1,5 @@
 <?php
+use hscstudio\mimin\components\Mimin;
 
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -77,6 +78,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                                                     </a>
                                                                 </div>
                                                                 <div class="media-body">
+                                                                <?php if ((Mimin::checkRoute($this->context->id."/delete-disposisi"))) { ?>
+                                                                    <span class="f-right"><a href='<?=Url::to(["delete-disposisi",'id'=>$detail->id])?>' data-method="POST" data-confirm="Apakah Anda yakin ingin menghapus disposisi ini??" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i></a> </span>
+                                                                <?php } ?>
                                                                     <h6 class="media-heading txt-primary"><?=$detail->pegawai->nama_lengkap?> - <?=$detail->pegawai->nama_jabatan?> <span class="f-12 text-muted m-l-5"><?=Yii::$app->formatter->asDate($detail->tanggal_disposisi)?></span></h6>
                                                                     <p><?=$detail->catatan_disposisi?></p>
                                                                     <p><?=$detail->jawaban_disposisi?></p>

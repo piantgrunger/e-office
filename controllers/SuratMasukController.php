@@ -223,4 +223,18 @@ class SuratMasukController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionDeleteDisposisi($id)
+    {
+        if (($model = Disposisi::findOne($id)) === null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+        $id_surat_masuk = $model->id_surat_masuk;
+        try {
+            $model->delete();
+        } catch (\yii\db\IntegrityException  $e) {
+            Yii::$app->session->setFlash('error', "Data Tidak Dapat Dihapus Karena Dipakai Modul Lain");
+        }
+        return $this->redirect(['disposisi','id'=>$id_surat_masuk]);
+    }
 }
