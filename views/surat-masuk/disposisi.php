@@ -63,6 +63,10 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
     </div>
 
+    <p> <?php if ((Mimin::checkRoute($this->context->id."/create"))) { ?>        <?=  Html::a('Disposisi Langsung', ['create-disposisi-langsung','id'=>$model->id], ['class' => 'btn btn-warning']) ?>
+    <?php } ?>    </p>
+   
+
     <div class="table-responsive">
 <div class="card comment-block">
                                                     <div class="card-header">

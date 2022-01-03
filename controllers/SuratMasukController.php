@@ -116,6 +116,34 @@ class SuratMasukController extends Controller
            'disposisiDetails' => [new DisposisiDetail()],
         ]);
     }
+    public function actionCreateDisposisiLangsung($id)
+    {
+        $model = new Disposisi();
+
+        if ($model->load(Yii::$app->request->post())) {
+            $disposisiDetails = Yii::$app->request->post('DisposisiDetail');
+            foreach ($disposisiDetails as $key => $disposisiDetail) {
+                $modelDisposisiDetail = new Disposisi();
+                $modelDisposisiDetail->id_surat_masuk = $id;
+                //$modelDisposisiDetail->id_parent = $id_disposisi;
+                $modelDisposisiDetail->catatan_disposisi = $model->catatan_disposisi;
+                $modelDisposisiDetail->tanggal_disposisi = date('Y-m-d');
+                $modelDisposisiDetail->status_disposisi = 'Belum Diterima';
+          
+
+                $modelDisposisiDetail->id_pegawai = $disposisiDetail['id_pegawai'];
+                $modelDisposisiDetail->save(false);
+            }
+   
+            return $this->redirect(['index']);
+        }
+        return $this->render('create-disposisi', [
+            'model' => $model,
+            //'id_disposisi' => $id_disposisi,
+            'id_surat_masuk' => $id,
+           'disposisiDetails' => [new DisposisiDetail()],
+        ]);
+    }
 
     public function actionJawabDisposisi($id)
     {

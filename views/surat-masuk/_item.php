@@ -9,17 +9,29 @@ $satuanKerja ='';
     if (Yii::$app->user->identity->pegawai) {
         $jabatan = Yii::$app->user->identity->pegawai->id_jabatan_fungsional;
         $satuanKerja = Yii::$app->user->identity->pegawai->id_satuan_kerja;
-    }
+        $pegawai = ArrayHelper::map((Pegawai::find()
 
-    $pegawai = ArrayHelper::map((Pegawai::find()
+        ->select(['id_pegawai', 'nama'=>"concat(nip,' - ',gelar_depan,' ', nama,' ',gelar_belakang ,' - ', nama_jabatan_fungsional)"])
+        ->leftJoin('tb_m_jabatan_fungsional', 'tb_m_jabatan_fungsional.id_jabatan_fungsional = tb_m_pegawai.id_jabatan_fungsional')
+          ->where(['id_atasan' => $jabatan ,'tb_m_pegawai.id_satuan_kerja'=>$satuanKerja])
+          ->asArray()
+          ->all()), 'id_pegawai', 'nama');
+        ;
+    } else {
+        $satuanKerja = Yii::$app->user->identity->id_satuan_kerja;
+        $pegawai = ArrayHelper::map((Pegawai::find()
 
-      ->select(['id_pegawai', 'nama'=>"concat(nip,' - ',gelar_depan,' ', nama,' ',gelar_belakang ,' - ', nama_jabatan_fungsional)"])
+      ->select(['id_pegawai', 'nama'=>"concat(nip,' - ',gelar_depan,' ', nama,' ',gelar_belakang ,' - ', nama_jabatan_fungsional ,' - ', nama_satuan_kerja)"])
+      ->innerJoin('tb_m_satuan_kerja', 'tb_m_satuan_kerja.id_satuan_kerja = tb_m_pegawai.id_satuan_kerja')
       ->leftJoin('tb_m_jabatan_fungsional', 'tb_m_jabatan_fungsional.id_jabatan_fungsional = tb_m_pegawai.id_jabatan_fungsional')
-        ->where(['id_atasan' => $jabatan ,'tb_m_pegawai.id_satuan_kerja'=>$satuanKerja])
+        ->where('coalesce(tb_m_pegawai.id_satuan_kerja,0) '. (is_null($satuanKerja) ? '<>0' : '='.$satuanKerja))
+        ->orderBy('tb_m_pegawai.id_satuan_kerja,id_eselon')
         ->asArray()
         ->all()), 'id_pegawai', 'nama');
         ;
+    }
 
+   
 
 ?>
 <td>
