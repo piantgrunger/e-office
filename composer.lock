@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fba25a198b1be7fefbdc5860a2b155e5",
+    "content-hash": "d66d8a18c8c1ad07d1947509c4d95059",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -55,7 +55,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -97,7 +97,7 @@
             "version": "3.6.0",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "e786e3d9707ffd9b0dd330ca135b66344dcef85a"
             },
             "dist": {
@@ -487,23 +487,20 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.13.0",
+            "version": "v4.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
-                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
+                "reference": "12ab42bd6e742c70c0a52f7b82477fcd44e64b75",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2"
-            },
-            "require-dev": {
-                "simpletest/simpletest": "dev-master#72de02a7b80c6bb8864ef9bf66d41d2f58f826bd"
             },
             "type": "library",
             "autoload": {
@@ -535,9 +532,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
-                "source": "https://github.com/ezyang/htmlpurifier/tree/master"
+                "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
-            "time": "2020-06-29T00:56:53+00:00"
+            "time": "2021-12-25T01:21:49+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
@@ -590,6 +587,294 @@
                 "source": "https://github.com/FortAwesome/Font-Awesome/tree/v4.7.0"
             },
             "time": "2016-10-24T15:52:54+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.5.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "e8ed4dbf49b260ff129ff0e0400718c3269971bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/e8ed4dbf49b260ff129ff0e0400718c3269971bf",
+                "reference": "e8ed4dbf49b260ff129ff0e0400718c3269971bf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.6.1",
+                "php": ">=5.5",
+                "symfony/polyfill-intl-idn": "^1.17.0"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4 || ^7.0",
+                "psr/log": "^1.1"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/guzzle/issues",
+                "source": "https://github.com/guzzle/guzzle/tree/6.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/alexeyshockov",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/gmponos",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/sagikazarmark",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-07-02T06:52:04+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
+                "reference": "fe752aedc9fd8fcca3fe7ad05d419d32998a06da",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^4.4 || ^5.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/promises/issues",
+                "source": "https://github.com/guzzle/promises/tree/1.5.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/promises",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-10-22T20:56:57+00:00"
+        },
+        {
+            "name": "guzzlehttp/psr7",
+            "version": "1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/psr7.git",
+                "reference": "1afdd860a2566ed3c2b0b4a3de6e23434a79ec85"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/1afdd860a2566ed3c2b0b4a3de6e23434a79ec85",
+                "reference": "1afdd860a2566ed3c2b0b4a3de6e23434a79ec85",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0",
+                "ralouphie/getallheaders": "^2.0.5 || ^3.0.0"
+            },
+            "provide": {
+                "psr/http-message-implementation": "1.0"
+            },
+            "require-dev": {
+                "ext-zlib": "*",
+                "phpunit/phpunit": "~4.8.36 || ^5.7.27 || ^6.5.14 || ^7.5.20 || ^8.5.8 || ^9.3.10"
+            },
+            "suggest": {
+                "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Psr7\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Graham Campbell",
+                    "email": "hello@gjcampbell.co.uk",
+                    "homepage": "https://github.com/GrahamCampbell"
+                },
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "George Mponos",
+                    "email": "gmponos@gmail.com",
+                    "homepage": "https://github.com/gmponos"
+                },
+                {
+                    "name": "Tobias Nyholm",
+                    "email": "tobias.nyholm@gmail.com",
+                    "homepage": "https://github.com/Nyholm"
+                },
+                {
+                    "name": "Márk Sági-Kazár",
+                    "email": "mark.sagikazar@gmail.com",
+                    "homepage": "https://github.com/sagikazarmark"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "email": "webmaster@tubo-world.de",
+                    "homepage": "https://github.com/Tobion"
+                }
+            ],
+            "description": "PSR-7 message implementation that also provides common utility methods",
+            "keywords": [
+                "http",
+                "message",
+                "psr-7",
+                "request",
+                "response",
+                "stream",
+                "uri",
+                "url"
+            ],
+            "support": {
+                "issues": "https://github.com/guzzle/psr7/issues",
+                "source": "https://github.com/guzzle/psr7/tree/1.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/Nyholm",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/guzzlehttp/psr7",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-10-05T13:56:00+00:00"
         },
         {
             "name": "hscstudio/yii2-mimin",
@@ -873,12 +1158,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-bootstrap4-dropdown.git",
-                "reference": "d5a62fbb57a37c17500321f58cb567080ff2f047"
+                "reference": "cf30cf92bed2bcf36b897f349d31ae634a6346f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-bootstrap4-dropdown/zipball/d5a62fbb57a37c17500321f58cb567080ff2f047",
-                "reference": "d5a62fbb57a37c17500321f58cb567080ff2f047",
+                "url": "https://api.github.com/repos/kartik-v/yii2-bootstrap4-dropdown/zipball/cf30cf92bed2bcf36b897f349d31ae634a6346f6",
+                "reference": "cf30cf92bed2bcf36b897f349d31ae634a6346f6",
                 "shasum": ""
             },
             "require": {
@@ -924,7 +1209,7 @@
                 "issues": "https://github.com/kartik-v/yii2-bootstrap4-dropdown/issues",
                 "source": "https://github.com/kartik-v/yii2-bootstrap4-dropdown/tree/master"
             },
-            "time": "2021-09-21T06:38:06+00:00"
+            "time": "2021-12-30T14:45:24+00:00"
         },
         {
             "name": "kartik-v/yii2-datecontrol",
@@ -1297,12 +1582,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-krajee-base.git",
-                "reference": "58105219f14665e874223de6a429ad4bc5403fb8"
+                "reference": "c7bdb54380a7cbeedcd4520b8e27a58e76fda0a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/58105219f14665e874223de6a429ad4bc5403fb8",
-                "reference": "58105219f14665e874223de6a429ad4bc5403fb8",
+                "url": "https://api.github.com/repos/kartik-v/yii2-krajee-base/zipball/c7bdb54380a7cbeedcd4520b8e27a58e76fda0a6",
+                "reference": "c7bdb54380a7cbeedcd4520b8e27a58e76fda0a6",
                 "shasum": ""
             },
             "suggest": {
@@ -1346,7 +1631,7 @@
                 "issues": "https://github.com/kartik-v/yii2-krajee-base/issues",
                 "source": "https://github.com/kartik-v/yii2-krajee-base/tree/master"
             },
-            "time": "2021-11-09T03:06:09+00:00"
+            "time": "2021-12-24T18:25:51+00:00"
         },
         {
             "name": "kartik-v/yii2-mpdf",
@@ -3221,12 +3506,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "707b7d584e47f11fb69c1a28b8f8307dea06bcc1"
+                "reference": "1fdd7e5cb3cad24ade81417e5d1dbbfbf4d74702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/707b7d584e47f11fb69c1a28b8f8307dea06bcc1",
-                "reference": "707b7d584e47f11fb69c1a28b8f8307dea06bcc1",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/1fdd7e5cb3cad24ade81417e5d1dbbfbf4d74702",
+                "reference": "1fdd7e5cb3cad24ade81417e5d1dbbfbf4d74702",
                 "shasum": ""
             },
             "require": {
@@ -3318,7 +3603,7 @@
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
                 "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/master"
             },
-            "time": "2021-12-18T19:48:27+00:00"
+            "time": "2022-01-02T03:44:27+00:00"
         },
         {
             "name": "psr/http-client",
@@ -3583,6 +3868,50 @@
                 "source": "https://github.com/php-fig/simple-cache/tree/master"
             },
             "time": "2017-10-23T01:57:42+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "time": "2019-03-08T08:55:37+00:00"
         },
         {
             "name": "rmrevin/yii2-fontawesome",
@@ -4260,17 +4589,164 @@
             "time": "2021-05-27T09:17:38+00:00"
         },
         {
+            "name": "symfony/polyfill-php80",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-php80.git",
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/57b712b08eddb97c762a8caa32c84e037892d2e9",
+                "reference": "57b712b08eddb97c762a8caa32c84e037892d2e9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "1.23-dev"
+                },
+                "thanks": {
+                    "name": "symfony/polyfill",
+                    "url": "https://github.com/symfony/polyfill"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php80\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Bazan",
+                    "email": "ion.bazan@gmail.com"
+                },
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 8.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "support": {
+                "source": "https://github.com/symfony/polyfill-php80/tree/main"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-09-13T13:58:33+00:00"
+        },
+        {
+            "name": "symfony/process",
+            "version": "5.4.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/process.git",
+                "reference": "7e21efdce0dcc8ebf43db0bf55cc1a70d27cb445"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/process/zipball/7e21efdce0dcc8ebf43db0bf55cc1a70d27cb445",
+                "reference": "7e21efdce0dcc8ebf43db0bf55cc1a70d27cb445",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5",
+                "symfony/polyfill-php80": "^1.16"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Process\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Executes commands in sub-processes",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/process/tree/5.4"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-01-02T09:53:40+00:00"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2d9bee8d1635338582869a464665ef3ab10ecb97"
+                "reference": "1b220f42a0242e4849319e915947425c9a837d53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2d9bee8d1635338582869a464665ef3ab10ecb97",
-                "reference": "2d9bee8d1635338582869a464665ef3ab10ecb97",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/1b220f42a0242e4849319e915947425c9a837d53",
+                "reference": "1b220f42a0242e4849319e915947425c9a837d53",
                 "shasum": ""
             },
             "require": {
@@ -4360,11 +4836,11 @@
                 "yii2"
             ],
             "support": {
-                "forum": "http://www.yiiframework.com/forum/",
+                "forum": "https://www.yiiframework.com/forum/",
                 "irc": "ircs://irc.libera.chat:6697/yii",
                 "issues": "https://github.com/yiisoft/yii2/issues?state=open",
                 "source": "https://github.com/yiisoft/yii2",
-                "wiki": "http://www.yiiframework.com/wiki/"
+                "wiki": "https://www.yiiframework.com/wiki/"
             },
             "funding": [
                 {
@@ -4380,7 +4856,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-12-21T21:57:30+00:00"
+            "time": "2021-12-30T07:51:17+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -4656,17 +5132,124 @@
             "time": "2021-10-20T07:23:20+00:00"
         },
         {
+            "name": "yiisoft/yii2-queue",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-queue.git",
+                "reference": "e5c905b3d4a4887c3575e137b2d689778c8b1dd3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-queue/zipball/e5c905b3d4a4887c3575e137b2d689778c8b1dd3",
+                "reference": "e5c905b3d4a4887c3575e137b2d689778c8b1dd3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0",
+                "symfony/process": "^3.3||^4.0||^5.0",
+                "yiisoft/yii2": "~2.0.14"
+            },
+            "require-dev": {
+                "aws/aws-sdk-php": ">=2.4",
+                "enqueue/amqp-lib": "^0.8||^0.9.10",
+                "enqueue/stomp": "^0.8.39",
+                "jeremeamia/superclosure": "*",
+                "pda/pheanstalk": "v3.*",
+                "php-amqplib/php-amqplib": "*",
+                "phpunit/phpunit": "~4.4",
+                "yiisoft/yii2-debug": "*",
+                "yiisoft/yii2-gii": "*",
+                "yiisoft/yii2-redis": "*"
+            },
+            "suggest": {
+                "aws/aws-sdk-php": "Need for aws SQS.",
+                "enqueue/amqp-lib": "Need for AMQP interop queue.",
+                "enqueue/stomp": "Need for Stomp queue.",
+                "ext-gearman": "Need for Gearman queue.",
+                "ext-pcntl": "Need for process signals.",
+                "pda/pheanstalk": "Need for Beanstalk queue.",
+                "php-amqplib/php-amqplib": "Need for AMQP queue.",
+                "yiisoft/yii2-redis": "Need for Redis queue."
+            },
+            "default-branch": true,
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\queue\\": "src",
+                    "yii\\queue\\amqp\\": "src/drivers/amqp",
+                    "yii\\queue\\amqp_interop\\": "src/drivers/amqp_interop",
+                    "yii\\queue\\beanstalk\\": "src/drivers/beanstalk",
+                    "yii\\queue\\db\\": "src/drivers/db",
+                    "yii\\queue\\file\\": "src/drivers/file",
+                    "yii\\queue\\gearman\\": "src/drivers/gearman",
+                    "yii\\queue\\redis\\": "src/drivers/redis",
+                    "yii\\queue\\sync\\": "src/drivers/sync",
+                    "yii\\queue\\sqs\\": "src/drivers/sqs",
+                    "yii\\queue\\stomp\\": "src/drivers/stomp"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Zhuravlev",
+                    "email": "zhuravljov@gmail.com"
+                }
+            ],
+            "description": "Yii2 Queue Extension which supported DB, Redis, RabbitMQ, Beanstalk, SQS and Gearman",
+            "keywords": [
+                "async",
+                "beanstalk",
+                "db",
+                "gearman",
+                "gii",
+                "queue",
+                "rabbitmq",
+                "redis",
+                "sqs",
+                "yii"
+            ],
+            "support": {
+                "docs": "https://github.com/yiisoft/yii2-queue/blob/master/docs/guide",
+                "issues": "https://github.com/yiisoft/yii2-queue/issues",
+                "source": "https://github.com/yiisoft/yii2-queue"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2-queue",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2021-12-30T08:42:19+00:00"
+        },
+        {
             "name": "yiisoft/yii2-swiftmailer",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "dc5376e47b37af5703ce5da23e1f9ff9944d9c4d"
+                "reference": "2472a3886b50d398c67dad9cd463d69a30174a82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/dc5376e47b37af5703ce5da23e1f9ff9944d9c4d",
-                "reference": "dc5376e47b37af5703ce5da23e1f9ff9944d9c4d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/2472a3886b50d398c67dad9cd463d69a30174a82",
+                "reference": "2472a3886b50d398c67dad9cd463d69a30174a82",
                 "shasum": ""
             },
             "require": {
@@ -4739,7 +5322,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-10-24T20:34:50+00:00"
+            "time": "2021-12-30T08:48:58+00:00"
         }
     ],
     "packages-dev": [
@@ -4749,12 +5332,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "fafead601df92bbd7fd9318ceb8c96af2cf79612"
+                "reference": "9594d0aad844f6fab3e5e0e53a1ebd5d28605c7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/fafead601df92bbd7fd9318ceb8c96af2cf79612",
-                "reference": "fafead601df92bbd7fd9318ceb8c96af2cf79612",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/9594d0aad844f6fab3e5e0e53a1ebd5d28605c7f",
+                "reference": "9594d0aad844f6fab3e5e0e53a1ebd5d28605c7f",
                 "shasum": ""
             },
             "require": {
@@ -4807,7 +5390,7 @@
                 "issues": "https://github.com/FakerPHP/Faker/issues",
                 "source": "https://github.com/FakerPHP/Faker/tree/main"
             },
-            "time": "2021-12-21T20:31:55+00:00"
+            "time": "2022-01-02T10:07:40+00:00"
         },
         {
             "name": "opis/closure",
@@ -5265,16 +5848,16 @@
         },
         {
             "name": "yiisoft/yii2-gii",
-            "version": "2.2.3",
+            "version": "2.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "eb14e9cc4c9d80a59e1252e5200600b42aa2bfbf"
+                "reference": "80893fc4c0df97f3638938948bf34ca43dd8bff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/eb14e9cc4c9d80a59e1252e5200600b42aa2bfbf",
-                "reference": "eb14e9cc4c9d80a59e1252e5200600b42aa2bfbf",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/80893fc4c0df97f3638938948bf34ca43dd8bff6",
+                "reference": "80893fc4c0df97f3638938948bf34ca43dd8bff6",
                 "shasum": ""
             },
             "require": {
@@ -5344,7 +5927,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-08-09T21:07:34+00:00"
+            "time": "2021-12-30T08:36:02+00:00"
         }
     ],
     "aliases": [],
@@ -5355,7 +5938,9 @@
         "kartik-v/yii2-widget-fileinput": 20,
         "kartik-v/yii2-datecontrol": 20,
         "yiisoft/yii2-bootstrap4": 20,
-        "kartik-v/yii2-bootstrap4-dropdown": 20
+        "kartik-v/yii2-bootstrap4-dropdown": 20,
+        "yiisoft/yii2-queue": 20,
+        "guzzlehttp/guzzle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
