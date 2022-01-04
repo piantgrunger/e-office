@@ -11,6 +11,20 @@ $config = [
     'bootstrap' => ['log','queue'],
     'controllerNamespace' => 'app\commands',
     'components' => [
+        'urlManager' => [
+
+            'scriptUrl' => 'https://simurat.banjarbaru-bagawi.id/',
+            'class' => 'yii\web\UrlManager',
+            // Hide index.php
+            'showScriptName' => false,
+            // Use pretty URLs
+            'enablePrettyUrl' => true,
+            'baseUrl' => 'https://simurat.banjarbaru-bagawi.id/',
+      
+    
+        ],
+    
+        
         
 
         'queue' => [
