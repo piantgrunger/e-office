@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use app\jobs\SendWhatsAppJob;
 
 /**
  * This is the model class for table "disposisi".
@@ -27,6 +28,17 @@ class Disposisi extends \yii\db\ActiveRecord
         return 'disposisi';
     }
 
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+        if ($insert) {
+            $job = new SendWhatsAppJob([
+                'id' => $this->id,
+            ]);
+            Yii::$app->queue->push($job);
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +52,8 @@ class Disposisi extends \yii\db\ActiveRecord
             [['status_disposisi'], 'string', 'max' => 255],
         ];
     }
+    
+
 
     /**
      * {@inheritdoc}

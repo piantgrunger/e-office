@@ -94,7 +94,7 @@ $config = [
     // set source language to be English
     'sourceLanguage' => 'en-US',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log','queue'],
     'components' => [
 
 
@@ -113,6 +113,21 @@ $config = [
             'dateFormat' => 'd MMMM y',
             'locale' => 'id-ID',
     
+        ],
+        'queue' => [
+            'class' => \yii\queue\db\Queue::class,
+            'db' => 'db', // DB connection component or its config
+            'tableName' => '{{%queue}}', // Table name
+            'channel' => 'default', // Queue channel key
+           'as log' => \yii\queue\LogBehavior::class,
+
+            'mutex' => \yii\mutex\MysqlMutex::class, // Mutex that used to sync queries
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0,
         ],
         'urlManager' => [
             'class' => 'yii\web\UrlManager',
@@ -185,6 +200,13 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
     ];
+    $config['modules']['debug'] = [
+        'class' => 'yii\debug\Module',
+            'panels' => [
+                'queue' => \yii\queue\debug\Panel::class,
+            
+            ],
+        ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
