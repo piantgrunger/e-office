@@ -18,7 +18,8 @@ class SendWhatsAppJob extends BaseObject implements JobInterface
         try {
             $pegawai = $disposisi->pegawai;
             $recipient = $pegawai->telepon;
-            $pesan ="📝 *Notifikasi Disposisi Surat Masuk*\n\nSaudara/i ".$pegawai->nama_lengkap.", saat ini terdapat  surat masuk yang di disposisikan kepada PIan dengan catatan : ".$disposisi->catatan_disposisi."\n\nSilahkan login ke aplikasi untuk melihat detail surat masuk.\n\nTerima Kasih.";
+            $pesan ="📝 *Notifikasi Disposisi Surat Masuk*\n\nSaudara/i ".$pegawai->nama_lengkap.", saat ini terdapat  surat masuk  ".Url::to(['/document/'.$disposisi->suratMasuk->file_surat], true)."
+             yang di disposisikan kepada PIan dengan catatan : ".$disposisi->catatan_disposisi."\n\nSilahkan login ke aplikasi untuk melihat detail surat masuk.\n\nTerima Kasih.";
 
             
         
