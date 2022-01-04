@@ -62,11 +62,11 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
             [['status', 'id_pegawai', 'id_satuan_kerja'], 'integer'],
             [['old_password', 'new_password', 'repeat_password'], 'string', 'min' => 6],
             [['repeat_password'], 'compare', 'compareAttribute' => 'new_password'],
-            [['old_password', 'new_password', 'repeat_password'], 'required', 'when' => function ($model) {
+            /*[['old_password', 'new_password', 'repeat_password'], 'required', 'when' => function ($model) {
                 return !empty($model->new_password);
             }, 'whenClient' => "function (attribute, value) {
                 return ($('#user-new_password').val().length>0);
-            }"],
+            }"],*/
             //['username', 'filter', 'filter' => 'trim'],
             //['username', 'unique', 'targetClass' => '\app\models\User', 'message' => 'This username has already been taken.'],
         ];
