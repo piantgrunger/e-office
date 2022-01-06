@@ -25,18 +25,19 @@ class SendWhatsAppJob extends BaseObject implements JobInterface
         
            
            
-            //    shell_exec("pm2 reload app");
+              shell_exec("pm2 reload app");
             $data = [
                 'number' => $recipient.'@c.us',
                 'message' => $pesan,
                 ];
-      
-            $client = new Client();
 
+            $client = new Client();
+      
             $client->request("POST", Yii::$app->params['urlSendWA'], [
                   'form_params' => $data,
                 ]);
         } catch (Exception  $e) {
         }
+
     }
 }

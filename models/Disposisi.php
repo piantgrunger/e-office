@@ -27,7 +27,7 @@ class Disposisi extends \yii\db\ActiveRecord
     {
         return 'disposisi';
     }
-
+/*
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
@@ -38,7 +38,7 @@ class Disposisi extends \yii\db\ActiveRecord
             Yii::$app->queue->push($job);
         }
     }
-
+*/
     /**
      * {@inheritdoc}
      */

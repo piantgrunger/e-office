@@ -206,6 +206,7 @@ if (YII_ENV_DEV) {
                 'queue' => \yii\queue\debug\Panel::class,
             
             ],
+        //    'allowedIPs' => ['*'],
         ];
 
     $config['bootstrap'][] = 'gii';

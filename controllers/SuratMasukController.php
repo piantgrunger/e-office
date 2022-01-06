@@ -4,9 +4,11 @@ namespace app\controllers;
 
 use app\models\Disposisi;
 use app\models\DisposisiDetail;
+use GuzzleHttp\Client;
 use Yii;
 use app\models\SuratMasuk;
 use app\models\DisposisiSearch;
+use yii\helpers\Url;
 
 use app\models\SuratMasukSearch;
 use yii\web\Controller;
@@ -133,6 +135,7 @@ class SuratMasukController extends Controller
 
                 $modelDisposisiDetail->id_pegawai = $disposisiDetail['id_pegawai'];
                 $modelDisposisiDetail->save(false);
+                $this->sendNotif( $modelDisposisiDetail->id);
             }
    
             return $this->redirect(['index']);
@@ -265,4 +268,34 @@ class SuratMasukController extends Controller
         }
         return $this->redirect(['disposisi','id'=>$id_surat_masuk]);
     }
+
+    private function sendNotif($id)
+    {
+        $disposisi = Disposisi::find()->where(['id'=>$id])->one();
+         
+        try {
+            $pegawai = $disposisi->pegawai;
+            $recipient = $pegawai->telepon;
+            $pesan ="📝 *Notifikasi Disposisi Surat Masuk*\n\nSaudara/i ".$pegawai->nama_lengkap.", saat ini terdapat  surat masuk  ".Url::to(['/document/'.$disposisi->suratMasuk->file_surat], true)."
+             yang di disposisikan kepada PIan dengan catatan : ".$disposisi->catatan_disposisi."\n\nSilahkan login ke aplikasi untuk melihat detail surat masuk.\n\nTerima Kasih.";
+
+            
+        
+           
+           
+            //    shell_exec("pm2 reload app");
+            $data = [
+                'number' => $recipient.'@c.us',
+                'message' => $pesan,
+                ];
+
+            $client = new Client();
+      
+            $client->request("POST", Yii::$app->params['urlSendWA'], [
+                  'form_params' => $data,
+                ]);
+        } catch (Exception  $e) {
+        }
+    }
+
 }
